@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Football Faves</string>
+    <string name="league_selector_placeholder">Start by picking your favorite leagues and clubs. We'll fetch standings, fixtures, and notifications using API-Football.</string>
+</resources>
