@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Football Faves</string>
     <string name="league_selector_placeholder">Start by picking your favorite leagues and clubs. We'll fetch standings, fixtures, and notifications using API-Football.</string>
+    <string name="league_selector_title">Pick your leagues</string>
+    <string name="league_selector_subtitle">Curate favorites so we can pull fixtures, standings, and notifications.</string>
+    <string name="search_leagues_hint">Search leagues or countries</string>
+    <string name="search_leagues_cd">Search leagues</string>
+    <string name="clear_search_cd">Clear search</string>
+    <string name="selected_leagues_none">No leagues selected</string>
+    <string name="selected_leagues_count">%1$d league(s) selected</string>
+    <string name="popular_picks_hint">Popular picks: EPL, La Liga, Serie A</string>
+    <string name="no_leagues_found">No leagues match your search</string>
+    <string name="no_leagues_hint">Try a country, competition name, or clear the search box.</string>
+    <string name="continue_label">Continue</string>
 </resources>

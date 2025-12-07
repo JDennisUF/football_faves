@@ -3,20 +3,16 @@ package com.footballfaves.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.footballfaves.app.ui.LeagueSelectionScreen
+import com.footballfaves.app.ui.LeagueSelectionViewModel
 import com.footballfaves.app.ui.theme.FootballFavesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,24 +35,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FootballFavesAppRoot(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(horizontal = 24.dp, vertical = 32.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(id = R.string.app_name),
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.primary
-        )
-        Text(
-            text = stringResource(id = R.string.league_selector_placeholder),
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            lineHeight = 22.sp,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-    }
+    val viewModel: LeagueSelectionViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsState()
+
+    LeagueSelectionScreen(
+        modifier = modifier,
+        state = uiState,
+        onQueryChange = viewModel::onQueryChange,
+        onClearQuery = viewModel::clearQuery,
+        onToggleFavorite = viewModel::toggleFavorite,
+        onContinue = { /* TODO: navigate to team selector */ }
+    )
 }
